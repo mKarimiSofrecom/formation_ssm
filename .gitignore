@@ -1,0 +1,31 @@
+### Symfony ###
+app/src/public/bundles/*
+app/src/var/*
+app/src/vendor/*
+
+
+### Docker ###
+
+docker/data/*
+docker-compose.override.yml
+
+### Composer ###
+app/src/vendor/*
+
+### Logs et fichiers temporaires ###
+app/src/var/cache/*
+app/src/var/log/*
+app/src/var/sessions/*
+
+
+### IDE ###
+/.idea/
+/.vscode/
+*.iml
+.DS_Store
+
+### Autres ###
+/node_modules/
+/npm-debug.log
+/yarn-error.log
+
