@@ -1,12 +1,8 @@
 ### Symfony ###
-app/src/public/bundles/
-app/src/var/
-app/src/vendor/
-app/src/.env.local
-app/src/env.local.php
-app/src/.phpunit.result.cache
-app/src/.phpunit.cache
-app/src/php-cs-fixer.phar
+app/src/public/bundles/*
+app/src/var/*
+app/src/vendor/*
+
 
 ### Docker ###
 
