@@ -35,7 +35,7 @@ Pour en savoir plus sur Symfony, consultez la [documentation officielle de Symfo
 
 ## Auteurs
 
-Ce projet est maintenu par [KArimi mohammed](https://github.com/mkarimiSofrecom).
+Ce projet est maintenu par [Karimi mohammed](https://github.com/mkarimiSofrecom).
 
 ## Licence
 
