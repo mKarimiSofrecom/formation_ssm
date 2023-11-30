@@ -10,11 +10,11 @@ app/src/php-cs-fixer.phar
 
 ### Docker ###
 
-docker/data/
+docker/data/*
 docker-compose.override.yml
 
 ### Composer ###
-app/src/vendor/
+app/src/vendor/*
 
 ### Logs et fichiers temporaires ###
 app/src/var/cache/*
