@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Hello {{ firstname }} {{ lastname }}{% endblock %}
+
+{% block body %}
+    <p><span> Bonjour </span></p>
+    <p><span> Je m'appéle  <b>{{ firstname }}   {{ lastname }}</b></span></p>
+    <p><span> J'ai <b>{{ age }} </b>ans</span></p>
+    <p><span> Et j'habite à <b>{{ adress }} - Maroc</b> </span></p>
+    {# ... autres informations du CV #}
+{% endblock %}

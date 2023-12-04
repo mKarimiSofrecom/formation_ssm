@@ -1,3 +1,30 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+app_personne:
+   path: /personne
+   controller: App\Controller\PersonneController::index
+
+app_personne_test:
+   path: /personne_test
+   controller: App\Controller\PersonneController::test
+   methods: [GET]
+
+# app_cv:
+#    path: /cv_sofrecom/{firstname}/{lastname}/{age?0}/{address}
+#    controller: App\Controller\CvController::index
+#    defaults:
+#       firstname: Sofrecom
+#       lastname: Sofrecom
+#       age: 0
+#       address: casa
+#    requirements:
+#       age: \d{1,2}
+#       address: casa|rabat
+      
+
+
+# route_name_1:
+#     path: /path1
+#     controller: App\Controller\ExampleController::multipleRoutesAction
+
+# route_name_2:
+#     path: /path2
+#     controller: App\Controller\ExampleController::multipleRoutesAction
