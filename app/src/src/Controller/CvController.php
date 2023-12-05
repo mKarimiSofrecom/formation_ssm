@@ -14,7 +14,7 @@ class CvController extends AbstractController
 
     /**
      * @Route("/cv/{firstname}/{lastname}/{age}/{address}", 
-     * name="app_cv", requirements={"age"="\d+","address"="casa|rabat"}, defaults={"firstname"="Sofrecom", "lastname"="Sofrecom", "age"=0, "address"="casablanca - maroc"})
+     *  name="app_cv", requirements={"age"="\d+","address"="casa|rabat"}, defaults={"firstname"="Sofrecom", "lastname"="Sofrecom", "age"=0, "address"="casablanca - maroc"})
      */
     public function index(Request $request): Response
     {
