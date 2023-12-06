@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Hello
+{% endblock %}
+
+{% block stylesheets %}
+
+	<link
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- STYLE Local  -->
+	<link id="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+{% block body %}
+	<div class="wraper">
+		<div class="container">
+
+			<div class="main-content">
+				<div class="section1 p-30" id="Home">
+					<div class="sec-title">
+						<div class="pg-sub-title">Home</div>
+						<div class="pg-title">My Profile</div>
+					</div>
+					<div class="d-flex-align-center img-profile">
+						<div class="user-img flex-1"><img src="{{ userData['profilImage']  }}"></div>
+						<div class="user-profile flex-2">
+							<div class="pro-details">
+								<div class="sm-text">HELLO EVERYBODY, I AM</div>
+								<div class="name">{{ userData['fullName'] }}</div>
+								<div class="role">{{ userData['jop'] }}</div>
+
+							</div>
+							<div class="text">{{ userData['piographie'] }}</div>
+							<div class="pr-list">
+								<ul>
+									<li>
+										<i class="fa fa-calendar" aria-hidden="true"></i>
+                                        {{ userData['birthDate']|date('d F, Y') }}
+										</li>
+									<li>
+										<i class="fa fa-phone" aria-hidden="true"></i>
+										{{ userData['phone'] }}</li>
+									<li>
+										<i class="fa fa-envelope" aria-hidden="true"></i>
+										{{ userData['email'] }}</li>
+									<li>
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+										{{ userData['adress'] }}</li>
+								</ul>
+							</div>
+
+							<section class="experience section-padding">
+								<div class="">
+                                    <!-- formations-->
+                                    <h3 class="experience-title">Formations</h3>
+									<div class="experience-wrapper">
+                                    {% for formation in userData['formations']  %}
+
+										<div class="company-wrapper clearfix">
+											<div class="experience-title">{{ formation['degree'] }}</div>
+											<!-- NAME OF THE COMPANY YOUWORK WITH  -->
+											<div class="time">{{ formation['year'] |date('d F, Y') }}</div>
+											<!-- THE TIME YOU WORK WITH THE COMPANY  -->
+										</div>
+
+										<div class="job-wrapper clearfix">
+											<div class="experience-title">{{ formation['institution'] }}
+											</div>
+											<!-- JOB TITLE  -->
+											<div class="company-description">
+												<p> {{ formation['desc'] }}</p>
+												<!-- JOB DESCRIPTION  -->
+											</div>
+										</div>
+
+									{% endfor %}	
+
+									</div>
+                                    <!-- experience-->
+									<h3 class="experience-title">Experience</h3>
+									<div class="experience-wrapper">
+                                    {% for experience in userData['experiences']  %}
+										<div class="company-wrapper clearfix">
+											<div class="experience-title">{{ experience['company'] }}</div>
+											<!-- NAME OF THE COMPANY YOUWORK WITH  -->
+											<div class="time">{{ experience['period'] }}</div>
+											<!-- THE TIME YOU WORK WITH THE COMPANY  -->
+										</div>
+
+										<div class="job-wrapper clearfix">
+											<div class="experience-title">{{ experience['position'] }}
+											</div>
+											<!-- JOB TITLE  -->
+											<div class="company-description">
+												<p>{{ experience['desc'] }}</p>
+												<!-- JOB DESCRIPTION  -->
+											</div>
+										</div>
+                                    {% endfor %}	
+
+									</div>
+									<!--Skill -->
+
+									<div class="section-wrapper clearfix pr-list skils-section">
+										<h3 class="experience-title">Skills</h3>
+										<!-- YOUR SET OF SKILLS  -->
+										<ul>
+                                        {% for skill in userData['skills']  %}
+                                        <li class="skill-percentage">{{ skill['name'] }}</li>
+                                        {% endfor %}	
+											
+										</ul>
+									</div>
+
+								</div>
+
+							</section>
+							<div class="social-icons-head">
+								<ul>
+									<li><a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+									<li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('assets/js/script.js') }}"></script>
+{% endblock %}

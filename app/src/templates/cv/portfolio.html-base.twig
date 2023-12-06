@@ -1,0 +1,200 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Hello
+{% endblock %}
+
+{% block stylesheets %}
+
+	<link
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- STYLE Local  -->
+	<link id="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+{% block body %}
+	<div class="wraper">
+		<div class="container">
+
+			<div class="main-content">
+				<div class="section1 p-30" id="Home">
+					<div class="sec-title">
+						<div class="pg-sub-title">Home</div>
+						<div class="pg-title">My Profile</div>
+					</div>
+					<div class="d-flex-align-center img-profile">
+						<div class="user-img flex-1"><img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600"></div>
+						<div class="user-profile flex-2">
+							<div class="pro-details">
+								<div class="sm-text">HELLO EVERYBODY, I AM</div>
+								<div class="name">Pavan Ramshetty</div>
+								<div class="role">UI Developer</div>
+
+							</div>
+							<div class="text">You will begin to realise why this exercise is called the Dickens Pattern (with reference to the ghost showing Scrooge some different futures)</div>
+							<div class="pr-list">
+								<ul>
+									<li>
+										<i class="fa fa-calendar" aria-hidden="true"></i>
+										14th May, 1992</li>
+									<li>
+										<i class="fa fa-phone" aria-hidden="true"></i>
+										90000XXXXX / 90XXXXXXXX</li>
+									<li>
+										<i class="fa fa-envelope" aria-hidden="true"></i>
+										xxxxxxxxxxxxxx@gmail.com</li>
+									<li>
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+										Hyderabad, Telangana</li>
+								</ul>
+							</div>
+
+							<section class="experience section-padding">
+								<div class="">
+                                    <!-- formations-->
+                                    <h3 class="experience-title">Formations</h3>
+									<div class="experience-wrapper">
+										<div class="company-wrapper clearfix">
+											<div class="experience-title">Company name</div>
+											<!-- NAME OF THE COMPANY YOUWORK WITH  -->
+											<div class="time">Nov 2012 - Present</div>
+											<!-- THE TIME YOU WORK WITH THE COMPANY  -->
+										</div>
+
+										<div class="job-wrapper clearfix">
+											<div class="experience-title">Front End Developer
+											</div>
+											<!-- JOB TITLE  -->
+											<div class="company-description">
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a elit facilisis, adipiscing leo in, dignissim magna.</p>
+												<!-- JOB DESCRIPTION  -->
+											</div>
+										</div>
+
+										<div class="company-wrapper clearfix">
+											<div class="experience-title">Company name</div>
+											<!-- NAME OF THE COMPANY YOUWORK WITH  -->
+											<div class="time">Nov 2010 - Present</div>
+											<!-- THE TIME YOU WORK WITH THE COMPANY  -->
+										</div>
+
+										<div class="job-wrapper clearfix">
+											<div class="experience-title">Freelance, Web Designer / Web Developer</div>
+											<!-- JOB TITLE  -->
+											<div class="company-description">
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a elit facilisis, adipiscing leo in, dignissim magna.</p>
+												<!-- JOB DESCRIPTION  -->
+											</div>
+										</div>
+
+										<div class="company-wrapper clearfix">
+											<div class="experience-title">Company name</div>
+											<!-- NAME OF THE COMPANY YOUWORK WITH  -->
+											<div class="time">Nov 2009 - Nov 2010</div>
+											<!-- THE TIME YOU WORK WITH THE COMPANY  -->
+										</div>
+
+										<div class="job-wrapper clearfix">
+											<div class="experience-title">Web Designer
+											</div>
+											<!-- JOB TITLE  -->
+											<div class="company-description">
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a elit facilisis, adipiscing leo in, dignissim magna.</p>
+												<!-- JOB DESCRIPTION  -->
+											</div>
+										</div>
+
+									</div>
+                                    <!-- experience-->
+									<h3 class="experience-title">Experience</h3>
+									<div class="experience-wrapper">
+										<div class="company-wrapper clearfix">
+											<div class="experience-title">Company name</div>
+											<!-- NAME OF THE COMPANY YOUWORK WITH  -->
+											<div class="time">Nov 2012 - Present</div>
+											<!-- THE TIME YOU WORK WITH THE COMPANY  -->
+										</div>
+
+										<div class="job-wrapper clearfix">
+											<div class="experience-title">Front End Developer
+											</div>
+											<!-- JOB TITLE  -->
+											<div class="company-description">
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a elit facilisis, adipiscing leo in, dignissim magna.</p>
+												<!-- JOB DESCRIPTION  -->
+											</div>
+										</div>
+
+										<div class="company-wrapper clearfix">
+											<div class="experience-title">Company name</div>
+											<!-- NAME OF THE COMPANY YOUWORK WITH  -->
+											<div class="time">Nov 2010 - Present</div>
+											<!-- THE TIME YOU WORK WITH THE COMPANY  -->
+										</div>
+
+										<div class="job-wrapper clearfix">
+											<div class="experience-title">Freelance, Web Designer / Web Developer</div>
+											<!-- JOB TITLE  -->
+											<div class="company-description">
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a elit facilisis, adipiscing leo in, dignissim magna.</p>
+												<!-- JOB DESCRIPTION  -->
+											</div>
+										</div>
+
+										<div class="company-wrapper clearfix">
+											<div class="experience-title">Company name</div>
+											<!-- NAME OF THE COMPANY YOUWORK WITH  -->
+											<div class="time">Nov 2009 - Nov 2010</div>
+											<!-- THE TIME YOU WORK WITH THE COMPANY  -->
+										</div>
+
+										<div class="job-wrapper clearfix">
+											<div class="experience-title">Web Designer
+											</div>
+											<!-- JOB TITLE  -->
+											<div class="company-description">
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a elit facilisis, adipiscing leo in, dignissim magna.</p>
+												<!-- JOB DESCRIPTION  -->
+											</div>
+										</div>
+
+									</div>
+									<!--Skill -->
+
+									<div class="section-wrapper clearfix pr-list skils-section">
+										<h3 class="experience-title">Skills</h3>
+										<!-- YOUR SET OF SKILLS  -->
+										<ul>
+											<li class="skill-percentage">HTML / HTML5</li>
+											<li class="skill-percentage">CSS / CSS3 / SASS / LESS</li>
+											<li class="skill-percentage">Javascript</li>
+											<li class="skill-percentage">Jquery</li>
+											<li class="skill-percentage">Wordpress</li>
+											<li class="skill-percentage">Photoshop</li>
+										</ul>
+									</div>
+
+								</div>
+
+							</section>
+							<div class="social-icons-head">
+								<ul>
+									<li><a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+									<li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('assets/js/script.js') }}"></script>
+{% endblock %}

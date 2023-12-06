@@ -1,0 +1,39 @@
+
+      {
+        "id": 1,
+        "nom": "John Doe",
+        "email": "john.doe@example.com",
+        "telephone": "123-456-7890",
+        "experiences": [
+          {
+            "poste": "Développeur Web",
+            "entreprise": "ABC Inc",
+            "periode": "2018-2021"
+          },
+          {
+            "poste": "Manager",
+            "entreprise": "XYZ Corp",
+            "periode": "2015-2018"
+          }
+        ],
+        "formations": [
+          {
+            "diplome": "Baccalauréat en Informatique",
+            "etablissement": "Université X",
+            "annee": "2014"
+          },
+          {
+            "diplome": "Maîtrise en Gestion de Projet",
+            "etablissement": "École Y",
+            "annee": "2012"
+          }
+        ],
+        "competences": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "PHP",
+          "Gestion de Projet"
+        ]
+}
+    
