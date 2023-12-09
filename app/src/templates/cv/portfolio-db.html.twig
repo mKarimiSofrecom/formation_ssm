@@ -22,53 +22,53 @@
 						<div class="pg-title">My Profile</div>
 					</div>
 					<div class="d-flex-align-center img-profile">
-						<div class="user-img flex-1"><img src="{{ userData['picture']  }}"></div>
+						<div class="user-img flex-1"><img src="{{ userData.picture  }}"></div>
 						<div class="user-profile flex-2">
 							<div class="pro-details">
 								<div class="sm-text">HELLO EVERYBODY, I AM</div>
-								<div class="name">{{ userData['fullName'] }}</div>
-								<div class="role">{{ userData['jop'] }}</div>
+								<div class="name">{{ userData.fullName }}</div>
+								<div class="role">{{ userData.jop }}</div>
 
 							</div>
-							<div class="text">{{ userData['piographie'] }}</div>
+							<div class="text">{{ userData.piographie }}</div>
 							<div class="pr-list">
 								<ul>
 									<li>
 										<i class="fa fa-calendar" aria-hidden="true"></i>
-                                        {{ userData['birthDate']|date('d F, Y') }}
+                                        {{ userData.birthday|date('d F, Y') }}
 										</li>
 									<li>
 										<i class="fa fa-phone" aria-hidden="true"></i>
-										{{ userData['phone'] }}</li>
+										{{ userData.phone }}</li>
 									<li>
 										<i class="fa fa-envelope" aria-hidden="true"></i>
-										{{ userData['email'] }}</li>
+										{{ userData.email }}</li>
 									<li>
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
-										{{ userData['adress'] }}</li>
+										{{ userData.adress }}</li>
 								</ul>
 							</div>
 
 							<section class="experience section-padding">
 								<div class="">
                                     <!-- formations-->
-                                    <h3 class="experience-title">Formations</h3>
+                                    <h3 class="experience-title">Academics</h3>
 									<div class="experience-wrapper">
-                                    {% for formation in userData['formations']  %}
+                                    {% for academic in userData.academics  %}
 
 										<div class="company-wrapper clearfix">
-											<div class="experience-title">{{ formation['degree'] }}</div>
+											<div class="experience-title">{{ academic.degree }}</div>
 											<!-- NAME OF THE COMPANY YOUWORK WITH  -->
-											<div class="time">{{ formation['year'] |date('d F, Y') }}</div>
+											<div class="time">{{ academic.year |date('d F, Y') }}</div>
 											<!-- THE TIME YOU WORK WITH THE COMPANY  -->
 										</div>
 
 										<div class="job-wrapper clearfix">
-											<div class="experience-title">{{ formation['institution'] }}
+											<div class="experience-title">{{ academic.institution }}
 											</div>
 											<!-- JOB TITLE  -->
 											<div class="company-description">
-												<p> {{ formation['desc'] }}</p>
+												<p> {{ academic.description }}</p>
 												<!-- JOB DESCRIPTION  -->
 											</div>
 										</div>
@@ -79,20 +79,20 @@
                                     <!-- experience-->
 									<h3 class="experience-title">Experience</h3>
 									<div class="experience-wrapper">
-                                    {% for experience in userData['experiences']  %}
+                                    {% for experience in userData.experiences  %}
 										<div class="company-wrapper clearfix">
-											<div class="experience-title">{{ experience['company'] }}</div>
+											<div class="experience-title">{{ experience.company }}</div>
 											<!-- NAME OF THE COMPANY YOUWORK WITH  -->
-											<div class="time">{{ experience['period'] }}</div>
+											<div class="time">{{ experience.period }}</div>
 											<!-- THE TIME YOU WORK WITH THE COMPANY  -->
 										</div>
 
 										<div class="job-wrapper clearfix">
-											<div class="experience-title">{{ experience['position'] }}
+											<div class="experience-title">{{ experience.position }}
 											</div>
 											<!-- JOB TITLE  -->
 											<div class="company-description">
-												<p>{{ experience['desc'] }}</p>
+												<p>{{ experience.description }}</p>
 												<!-- JOB DESCRIPTION  -->
 											</div>
 										</div>
@@ -105,8 +105,8 @@
 										<h3 class="experience-title">Skills</h3>
 										<!-- YOUR SET OF SKILLS  -->
 										<ul>
-                                        {% for skill in userData['skills']  %}
-                                        <li class="skill-percentage">{{ skill['name'] }}</li>
+                                        {% for skill in userData.skills  %}
+                                        <li class="skill-percentage">{{ skill.name }}</li>
                                         {% endfor %}	
 											
 										</ul>

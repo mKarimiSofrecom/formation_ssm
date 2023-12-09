@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Annotation\Method;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Entity\User; // Import the User entity class
 
 
 class CvController extends AbstractController
@@ -92,7 +94,7 @@ class CvController extends AbstractController
                     "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a elit facilisis, adipiscing leo in, dignissim magna."
                     }
                     ],
-                "profilImage": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600"
+                "picture": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600"
             }';
 
         // Deserialize JSON data into an array
@@ -103,6 +105,30 @@ class CvController extends AbstractController
         return $this->render('cv/portfolio.html.twig', [
             'controller_name' => 'CvController',
             'userData' => $userData,
+        ]);
+    }
+
+
+
+    /**
+     * @Route("/cv/show/{id}", name="app_cv_show_by_id")
+     */
+    public function showUserById($id): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = $entityManager->getRepository(User::class)->find($id);
+
+        if (!$user) {
+            throw $this->createNotFoundException('User not found');
+        }
+        
+        dump($user);
+
+        // Rest of the code...
+
+        return $this->render('cv/portfolio-db.html.twig', [
+            'controller_name' => 'CvController',
+            'userData' => $user,
         ]);
     }
 }
