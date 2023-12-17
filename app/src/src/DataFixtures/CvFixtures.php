@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Academic;
 use App\Entity\Skill;
 use App\Entity\Experience;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -13,6 +14,11 @@ use Doctrine\Persistence\ObjectManager;
 
 class CvFixtures extends Fixture
 {
+    private $hasher;
+    public function __construct(UserPasswordHasherInterface $hasher)
+    {
+        $this->hasher = $hasher;
+    }
     public function load(ObjectManager $manager): void
     {
 
@@ -103,6 +109,9 @@ class CvFixtures extends Fixture
         $user->setBirthday(new \DateTime('1990-01-01'));
         $user->setPiographie('Lorem ipsum dolor sit amet consectetur adipisicing elit.');
         $user->setEmail('john.doe@example.com');
+        $hashedPassword = $this->hasher->hashPassword($user, "passwd");
+        $user->setPassword($hashedPassword);
+        $user->setRoles(['ROLE_USER']);
         $user->setPicture("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600");
         $user->addAcademic( $academic3);
         $user->addAcademic( $academic2);
@@ -122,6 +131,10 @@ class CvFixtures extends Fixture
         $user1->setBirthday(new \DateTime('1990-01-01'));
         $user1->setPiographie('Lorem ipsum dolor sit amet consectetur adipisicing elit.');
         $user1->setEmail('joh@gmail.com');
+        $hashedPassword = $this->hasher->hashPassword($user1, "passwd");
+        $user1->setPassword($hashedPassword);
+        $user1->setRoles(['ROLE_USER']);
+
         $user1->setPicture("https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=600");
         $user1->addAcademic( $academic2);
         $user1->addAcademic( $academic3);
@@ -140,6 +153,9 @@ class CvFixtures extends Fixture
         $user2->setBirthday(new \DateTime('1997-01-01'));
         $user2->setPiographie('Lorem ipsum dolor sit amet consectetur adipisicing elit.');
         $user2->setEmail('mohammedali@fmail.com');
+        $hashedPassword = $this->hasher->hashPassword($user2, "passwd");
+        $user2->setPassword($hashedPassword);
+        $user2->setRoles(['ROLE_ADMIN']);
         $user2->setPicture("https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=600");
         $user2->addAcademic($academic);
         $user2->addAcademic($academic2);
