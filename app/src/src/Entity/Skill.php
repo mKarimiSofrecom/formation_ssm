@@ -6,12 +6,14 @@ use App\Repository\SkillRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity(repositoryClass=SkillRepository::class)
  */
-class Skill
+class Skill implements JsonSerializable
 {
+   
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -93,6 +95,13 @@ class Skill
 
         return $this;
     }
-
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'level' => $this->getLevel()
+        ];
+    }
     
 }

@@ -10,8 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=AcademicRepository::class)
  */
-class Academic
+class Academic implements \JsonSerializable 
 {
+    
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -126,6 +127,16 @@ class Academic
         $this->user->removeElement($user);
 
         return $this;
+    }
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'degree' => $this->degree,
+            'institution' => $this->institution,
+            'year' => $this->year->format('Y-m-d'),
+            'description' => $this->description,
+        ];
     }
 
     

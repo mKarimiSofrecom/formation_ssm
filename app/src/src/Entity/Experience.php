@@ -4,12 +4,14 @@ namespace App\Entity;
 
 use App\Repository\ExperienceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity(repositoryClass=ExperienceRepository::class)
  */
-class Experience
+class Experience implements JsonSerializable
 {
+   
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -108,6 +110,16 @@ class Experience
 
         return $this;
     }
-
+    
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'position' => $this->getPosition(),
+            'company' => $this->getCompany(),
+            'period' => $this->getPeriod(),
+            'description' => $this->getDescription()
+        ];
+    }
    
 }

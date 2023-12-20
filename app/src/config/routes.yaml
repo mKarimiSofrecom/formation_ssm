@@ -1,15 +1,15 @@
 app_personne:
    path: /personne
-   controller: App\Controller\PersonneController::index
+   controller: App\Controller\Web\PersonneController::index
 
 app_personne_test:
    path: /personne_test
-   controller: App\Controller\PersonneController::test
+   controller: App\Controller\Web\PersonneController::test
    methods: [GET]
 
 app_cv:
    path: /cv_sofrecom/{firstname}/{lastname}/{age?0}/{address}
-   controller: App\Controller\CvController::index
+   controller: App\Controller\Web\CvController::index
    methods: [GET,POST]
    defaults:
       firstname: Sofrecom

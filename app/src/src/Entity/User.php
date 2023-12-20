@@ -9,15 +9,17 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-
+use JsonSerializable;
 
 /**
  * [UniqueEntity('mail')]
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface,JsonSerializable
 {
+    
+   
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -418,4 +420,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+    
+    /**
+     * Serializes the User object to JSON.
+     *
+     * @return array The serialized User object.
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'fullname' => $this->getFullname(),
+            'jop' => $this->getJop(),
+            'email' => $this->getEmail(),
+            'phone' => $this->getPhone(),
+            'adress' => $this->getAdress(),
+            'birthday' => $this->getBirthday(),
+            'piographie' => $this->getPiographie(),
+            'picture' => $this->getPicture(),
+            'academics' => $this->getAcademics()->toArray() ,
+            'experiences' => $this->getExperiences()->toArray() ,
+            'skills' => $this->getSkills()->toArray() ,
+            //'review' => $this->getReview(),
+            // 'user_to' => $this->getUserTo(),
+            // 'roles' => $this->getRoles(),
+        ];
+    }
+    public function __toString()
+    {
+        return $this->getFullname();
+    }
+   
+   
+   
 }
