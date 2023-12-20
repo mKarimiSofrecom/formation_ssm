@@ -17,14 +17,7 @@ security:
         
     firewalls:
         
-        # main:
-        #     lazy: true
-        #     provider: app_user_provider
-        #     custom_authenticator: App\Security\AppAuthenticator
-        #     logout:
-        #         path: app_logout
-        #         # where to redirect after logout
-        #         target: app_login
+        
         # main:
         #     lazy: true
         #     provider: app_user_provider
@@ -38,20 +31,28 @@ security:
                 check_path:               /api/login_check
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-        api:
-            pattern: ^/api
-            stateless: true
-            jwt: ~
         # api:
-        #     pattern:   ^/api
+        #     pattern: ^/api
         #     stateless: true
-        #     provider: app_user_provider
-        #     guard:
-        #         authenticators:
-        #             - lexik_jwt_authentication.jwt_token_authenticator
+        #     jwt: ~
+        api:
+            pattern:   ^/api
+            stateless: true
+            provider: app_user_provider
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        main:
+            lazy: true
+            provider: app_user_provider
+            custom_authenticator: App\Security\AppAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                target: app_login
         #main:
             # anonymous: true
     
@@ -66,11 +67,11 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
        
-        #- { path: ^/cv, roles: [ROLE_USER, ROLE_ADMIN] }
-        #- { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/cv, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
         - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
 
         # - { path: ^/admin, roles: ROLE_ADMIN }
