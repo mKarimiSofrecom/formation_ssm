@@ -1,11 +1,18 @@
-app_personne:
-   path: /personne
-   controller: App\Controller\Web\PersonneController::index
+#  API CALLS
+register:
+  path: /api/register
+  controller: App\Controller\Rest\AuthController::register
+  methods: POST
+api_login_check:
+  path: /api/login_check
+  controller: App\Controller\Rest\AuthController::getTokenUser
+test:
+  path: /api/test
+  controller: App\Controller\Rest\ApiController::test
 
-app_personne_test:
-   path: /personne_test
-   controller: App\Controller\Web\PersonneController::test
-   methods: [GET]
+
+
+#  WEB CALLS
 
 app_cv:
    path: /cv_sofrecom/{firstname}/{lastname}/{age?0}/{address}

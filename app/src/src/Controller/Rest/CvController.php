@@ -14,10 +14,11 @@ class CvController extends AbstractController
   /**
    * @param UserRepository $userRepository
    * @return JsonResponse
-   * @Route("api/profils", name="profils", methods={"GET"})
+   * @Route("api/profils", name="api_profils", methods={"GET"})
    */
   public function getPosts(UserRepository $userRepository)
   {
+   
     $data = $userRepository->findAll();
     //dd($data);
     return new JsonResponse($data);
