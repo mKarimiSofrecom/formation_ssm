@@ -1,7 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_default.html.twig' %}
 
 {% block title %}
-	Hello
+	{{ userData.fullName }}
 {% endblock %}
 
 {% block stylesheets %}
@@ -9,7 +9,7 @@
 	<link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- STYLE Local  -->
-	<link id="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" rel="stylesheet" media="screen">
+	<link id="stylesheet" type="text/css" href="{{ asset('assets/css/style_cv.css') }}" rel="stylesheet" media="screen">
 {% endblock %}
 {% block body %}
 	<div class="wraper">
@@ -135,5 +135,5 @@
 
 {% endblock %}
 {% block javascripts %}
-	<script src="{{ asset('assets/js/script.js') }}"></script>
+	<script src="{{ asset('assets/js/scripjs_cv.js') }}"></script>
 {% endblock %}

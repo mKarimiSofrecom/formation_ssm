@@ -68,6 +68,8 @@ security:
     access_control:
        
         - { path: ^/cv, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/admin, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/api/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
         - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
