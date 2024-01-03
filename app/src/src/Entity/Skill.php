@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @ORM\Entity(repositoryClass=SkillRepository::class)
@@ -103,5 +104,6 @@ class Skill implements JsonSerializable
             'level' => $this->getLevel()
         ];
     }
+    
     
 }
