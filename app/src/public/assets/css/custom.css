@@ -1,0 +1,15 @@
+/* --------------------------------------
+=========================================
+Aarvi - Multipurpose Bootstrap 4 Admin Template
+Version: 1.0
+Designed By: Perfectin (Palani Velayudam)
+=========================================
+--------------------------------------------------------*/
+
+/* Smaller button */
+.btn-group-sm>.btn, .btn-sm {
+    padding: 0.15rem 0.4rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
