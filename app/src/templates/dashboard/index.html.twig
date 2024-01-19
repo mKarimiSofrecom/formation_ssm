@@ -1,0 +1,85 @@
+
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+            <!--card stats start-->
+ <!--BEGIN CONTENT-->
+                  <section id="main_content" class="bg slice-sm sct-color-1">
+                        <div class="container" id="container">
+                            <!--BEGIN BREADCRUMB-->
+                            <div class="breadcrumb-pageheader p-b-25">
+                                <ol class="breadcrumb sm-breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                </ol>
+                                <h6 class="sm-pagetitle--style-1 has_page_title">Dashboard </h6>
+                            </div>
+                            <!--END BREADCRUMB-->
+
+                            <!--BEGIN PAGE CONTENT-->
+                            <div class="sm-content dashboard_v3">
+                                <div class="sm-content-box">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="tabs tabs--style-2" role="tabpanel">
+                                            
+
+                                                <!-- Tab panes -->
+                                                <div class="tab-content">
+                                                    <div role="tabpanel" class="tab-pane active"
+                                                         id="tabTwo-1">
+                                                        <div class="tab-body p-0" style="background: unset !important;">
+                                                            <div class="row m-2">
+                                                            <div class="col-6 col-sm-3 col-xl-2">
+                                                                    <a class="sm-box sm_bodered_widget centered trend-in-corner xs" href="">
+                                                                        <div class="label">Users</div>
+                                                                        <div class="value">{{ totalUsers }}</div>
+                                                                        <div class="trending trending-down"></div>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-6 col-sm-3 col-xl-2">
+                                                                    <a class="sm-box sm_bodered_widget centered trend-in-corner xs" href="">
+                                                                        <div class="label">Academics</div>
+                                                                        <div class="value">{{ totalacademics }}</div>
+                                                                        <div class="trending trending-up"></div>
+                                                                    </a>
+                                                                </div>
+                                                                
+                                                              
+                                                                <div class="col-6 col-sm-3 col-xl-2 res-xs-m-t-20">
+                                                                    <a class="sm-box sm_bodered_widget centered trend-in-corner xs" href="">
+                                                                        <div class="label">Experiences</div>
+                                                                        <div class="value text-danger">{{ totalExperiences }}</div>
+                                                                        <div class="trending trending-up"></div>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-6 col-sm-3 col-xl-2 res-xs-m-t-20">
+                                                                    <a class="sm-box sm_bodered_widget centered trend-in-corner xs" href="">
+                                                                        <div class="label">Skills</div>
+                                                                        <div class="value text-danger">{{ totalSkills }}</div>
+                                                                        <div class="trending trending-up"></div>
+                                                                    </a>
+                                                                </div>
+                                                               
+                                                                
+                                                            </div>
+
+                                                          
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--END PAGE CONTENT-->
+                        </div>
+                    </section>
+
+                    <!--END CONTENT-->
+<!--card stats end-->
+    
+{% endblock content %}

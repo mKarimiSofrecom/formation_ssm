@@ -1,0 +1,196 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1>User index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fullname</th>
+                <th>Email</th>
+                <th>Jop</th>
+                <th>Phone</th>
+                <th>Adress</th>
+                <th>Birthday</th>
+                <th>Piographie</th>
+                <th>Picture</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.fullname }}</td>
+                <td>{{ user.jop }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.adress }}</td>
+                <td>{{ user.birthday ? user.birthday|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.piographie }}</td>
+                <td>{{ user.picture }}</td>
+                <td>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_new') }}">Create new</a>
+{% endblock %} #}
+
+
+
+{% extends 'base.html.twig' %}
+{% block style %}
+    <style>
+        .btn-group.btn-group-sm a{
+        margin-right: 5px;
+    }
+    </style>
+
+    <link href="{{ asset('assets/plugins/bootstrap-table/bootstrap-table.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css') }}"
+          rel="stylesheet"/>
+    <link href="{{ asset('assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css') }}" rel="stylesheet"/>
+
+{% endblock style %}
+
+{% block content %}
+    <!--card stats start-->
+    <!--BEGIN CONTENT-->
+    <section id="main_content" class="bg slice-sm sct-color-1">
+        <div
+                class="container" id="container">
+            <!--BEGIN BREADCRUMB-->
+            <div class="breadcrumb-pageheader p-b-25">
+                <ol class="breadcrumb sm-breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">List of Users</li>
+                </ol>
+                <h6 class="sm-pagetitle--style-1 has_page_title">Users
+                </h6>
+            </div>
+            <!--END BREADCRUMB-->
+
+            <!--BEGIN PAGE CONTENT-->
+            <div class="sm-content">
+                <div class="sm-content-box">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sm-wrapper">
+                                <div class="title_box sm-header-style-1">
+
+                                    <h6 class="sm-header">
+                                        List of Users
+                                    </h6>
+                                </div>
+
+                               <div class="sm-box">
+                                    <a href="{{ path('app_user_new') }}">
+                                        <div class="sm-info">
+                                            <div class="sm-info-with-icon">
+
+                                                <div class="sm-info-icon">
+                                                    <div class="fa fa-user"></div>
+                                                </div>
+
+                                                <div class="sm-info-text">
+                                                    <h5 class="sm-inner-header">New User</h5>
+
+                                                </div>
+
+                                            </div>
+                                    </a>
+                                </div>
+
+                                <table id="data-table" class="table table-striped table-bordered">
+                                    <caption>The user list</caption>
+                                    <thead>
+                                        <tr>
+                                            <td>Picture</td>
+                                            <th>Fullname</th>
+                                            <th>Email</th>
+                                            <th>Jop</th>
+                                            <th>Phone</th>
+                                            <th>Adress</th>
+                                            <th>Birthday</th>
+                                            <th>Piographie</th>
+                                            <th>actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {% for user in users %}
+
+ <!-- Code to handle if the picture URL contains "http" or "https" -->
+ {# {{ dump(user) }}} #}
+  {% if user.picture is not empty and user.picture matches '/^(http|https)/'  %}
+    {% set pathPicture = user.picture %}
+  {% else %}
+    {% set pathPicture = asset('uploads/' ~ user.picture)  %}
+
+  {% endif %}
+
+                                                      
+                                        {# {% if user.roles[0] != 'ROLE_SUPER_ADMIN' %} #}
+                                            <tr>
+                                                <td><img src="{{pathPicture}}" 
+                                                
+                                               
+                                                {# {% if user.picture is not empty %}{{ user.picture }} 
+                                                {% endif %}"  #}
+                                                class="width-80  responsive-img"  alt=""/></td>
+                                                <td>{{ user.fullname }}</td>
+                                                <td>{{ user.email }}</td>
+                                                <td>{{ user.jop }}</td>
+                                                <td>{{ user.phone}}</td>
+                                                <td>{{ user.adress}}</td>
+                                                <td>{{ user.birthday ? user.birthday|date('Y-m-d H:i:s') : '' }}</td>
+                                                <td>{{ user.piographie }}</td>
+                                               
+                                                <td class="text-center">
+                                                    <div class="btn-group btn-group-sm">
+                                                        {# <a href="{{ path('app_user_show', {'id': user.id}) }}" title="show user info" class="btn btn-info" data-original-title="Détail"><i class="fa fa-eye"></i></a> #}
+                                                        <a href="{{ path('app_cv_show_by_id', {'id': user.id}) }}" title="show user info" class="btn btn-info" data-original-title="Détail"><i class="fa fa-eye"></i></a>
+                                                        <span>  </span>
+                                                        <a href="{{ path('app_user_edit', {'id': user.id}) }}" title="show user info" class="btn btn-info" data-original-title="Détail"><i class="fa fa-edit"></i></a>
+                                                        <a href="{{ path('app_user_delete', {'id': user.id}) }}" title="show user info" class="btn btn-info" data-original-title="Détail"><i class="fa fa-remove"></i></a>
+
+                                                    </div>
+                                                    
+                                                </td>
+                                            </tr>
+                                        {# {% endif %} #}
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--END PAGE CONTENT--></section><!--END CONTENT--><!--card stats end-->
+{% endblock content %}
+
+{% block javascript %}
+<script src="{{ asset('assets/plugins/DataTables/media/js/jquery.dataTables.js') }}"></script><script src="{{ asset('assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js') }}"></script><script src="{{ asset('assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js') }}"></script><script src="{{ asset('assets/plugins/bootstrap-table/bootstrap-table.js') }}"></script><script src="{{ asset('assets/plugins/bootstrap-table/extensions/export/bootstrap-table-export.js') }}"></script><script src="{{ asset('assets/plugins/bootstrap-table/extensions/export/tableExport.js') }}"></script><script src="{{ asset('assets/js/sm_tables_dataTable_default.js') }}"><script>
+function changeStatus(iD) {}</script>{% endblock javascript %}

@@ -1,0 +1,185 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{# {% block body %}
+    <h1>Create new User</h1>
+
+    {{ include('user/_form.html.twig') }}
+
+    <a href="{{ path('app_user_index') }}">back to list</a>
+{% endblock %} #}
+
+
+
+{% block style %}
+    <link href="{{ asset('assets/plugins/bootstrap-table/bootstrap-table.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css') }}" rel="stylesheet"/>
+
+
+{% endblock style %}
+
+{% block content %}
+    <section id="main_content" class="bg slice-sm sct-color-1"> <div
+                class="container" id="container">
+
+            <!--BEGIN BREADCRUMB-->
+            <div class="breadcrumb-pageheader p-b-25">
+                <ol class="breadcrumb sm-breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="{{ path('app_user_index') }}">List of Ambulances</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Add new User</li>
+                </ol>
+                <h6 class="sm-pagetitle--style-1 has_page_title">Add User
+                </h6>
+            </div>
+            <!--END BREADCRUMB-->
+
+            <!--BEGIN PAGE CONTENT-->
+            <div class="sm-content">
+                <div class="sm-content-box">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sm-wrapper">
+                                <div class="title_box sm-header-style-1">
+
+                                    <h6 class="sm-header">
+                                        Add USer
+                                    </h6>
+                                </div>
+                                <div class="sm-box">
+                                    <div class="sm-info">
+                                        <div class="sm-info-with-icon">
+                                            <div class="sm-info-icon">
+                                                <div class="fa fa-user"></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    {% if not form.vars.valid %}
+                                        <div class="alert alert-danger">
+                                        {{ form_errors(form) }}
+                                        {% for children in form.children %}
+                                            {% if not children.vars.valid %}
+                                                {{ form_errors(children) }}
+                                            {% endif %}
+                                            {% for child in children %}
+                                                {% if not child.vars.valid %}
+                                                    {{ form_errors(child) }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endfor %}
+                                        </div>
+                                    {% endif %}
+
+                                    {{ form_start(form, {'attr' : {'class': 'form-horizontal form-bordered', 'enctype': 'multipart/form-data'}}) }}
+                                    <div class="form-group row m-b-15">
+                                        <label class="col-md-4 col-sm-4 col-form-label" for="fullname">full name
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                              {{ form_widget(form.fullname, {'attr': {'class': 'form-control' }}) }}
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row m-b-15">
+                                        <label class="col-md-4 col-sm-4 col-form-label" for="fullname">Email 
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            {{ form_widget(form.email, {'attr': {'class': 'form-control' }}) }}
+                                        </div>
+                                    </div>
+                                     <div class="form-group row m-b-15">
+                                        <label class="col-md-4 col-sm-4 col-form-label" for="marque">Mot de PAss <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            {{ form_widget(form.password, {'attr': {'class': 'form-control' }}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row m-b-15">
+                                        <label class="col-md-4 col-sm-4 col-form-label" for="model">Jop <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            {{ form_widget(form.jop, {'attr': {'class': 'form-control' }}) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row m-b-15">
+                                        <label class="col-md-4 col-sm-4 col-form-label" for="date_of_circulation">Birthday<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            {{ form_widget(form.birthday , {'attr': {'type':'text', 'class': 'form-control', 'id': 'masked-input-date', 'placeholder': 'dd/mm/yyyy', 'autocomplete':'off' }}) }}
+                                        </div>
+                                    </div>
+                                <div  class="form -group row m-b-15">
+                                        <label class="col-md-4 col-sm-4 col-form-label" for="fullname">Address <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            {{ form_widget(form.adress, {'attr': {'class': 'form-control' }}) }}
+                                        </div>
+                                    </div> 
+                                    <div class="form-group row m-b-15">
+                                        <label class="col-md-4 col-sm-4 col-form-label" for="fullname">Phone <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            {{ form_widget(form.phone, {'attr': {'class': 'form-control' }}) }}
+                                        </div>
+                                    </div>
+                                     <div  class="form -group row m-b-15">
+                                        <label class="col-md-4 col-sm-4 col-form-label" for="fullname">Role <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            {{ form_widget(form.roles, {'attr': {'class': 'form-control' }}) }}
+                                        </div>
+                                    </div> 
+                                    <div  class="form -group row m-b-15">
+                                        <label class="col-md-4 col-sm-4 col-form-label" for="fullname"> Picture <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            {{ form_widget(form.picture, {'attr': {'class': 'form-control' }}) }}
+                                        </div>
+                                    </div> 
+                                    <div  class="form -group row m-b-15">
+                                        <label class="col-md-4 col-sm-4 col-form-label" for="fullname">Piographie <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            {{ form_widget(form.piographie, {'attr': {'class': 'form-control' }}) }}
+                                        </div>
+                                    </div> 
+
+                                    <div class="form-group row m-b-0">
+                                        <label class="col-md-4 col-sm-4 col-form-label">&nbsp;</label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <button type="submit" class="btn btn-primary">Submit Data
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {{ form_end(form) }}
+                                    
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--END PAGE CONTENT-->
+        </div>
+    </section>
+{#    <h1>Create new Ambulance</h1>#}
+
+{#    {{ include('ambulance/_form.html.twig') }}#}
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('assets/js/adm_page/ambulance_new.js') }}"></script>
+{% endblock javascript %}
+
