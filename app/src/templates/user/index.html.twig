@@ -138,14 +138,14 @@
 
                                     {% for user in users %}
 
- <!-- Code to handle if the picture URL contains "http" or "https" -->
- {# {{ dump(user) }}} #}
-  {% if user.picture is not empty and user.picture matches '/^(http|https)/'  %}
-    {% set pathPicture = user.picture %}
-  {% else %}
-    {% set pathPicture = asset('uploads/' ~ user.picture)  %}
+                                        <!-- Code to handle if the picture URL contains "http" or "https" -->
+                                        {# {{ dump(user) }}} #}
+                                        {% if user.picture is not empty and user.picture matches '/^(http|https)/'  %}
+                                            {% set pathPicture = user.picture %}
+                                        {% else %}
+                                            {% set pathPicture = asset('uploads/' ~ user.picture)  %}
 
-  {% endif %}
+                                        {% endif %}
 
                                                       
                                         {# {% if user.roles[0] != 'ROLE_SUPER_ADMIN' %} #}

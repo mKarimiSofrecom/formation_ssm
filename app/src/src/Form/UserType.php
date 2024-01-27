@@ -11,7 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use App\Entity\Skill;;
+use App\Entity\Skill;
+
 use App\Repository\SkillRepository;
 
 class UserType extends AbstractType
@@ -80,9 +81,9 @@ class UserType extends AbstractType
                 ]
             ])
             //->add('review')
-            // ->add('skills', Skill::class, [ // Add this block
-            //     'class' => Skill::class, // Assuming Skills::getAllSkills() returns an array of skills
-            //     'choice_label' => 'skills', // Property of Category to display in the dropdown
+            // ->add('skills', null, [
+            //     'class' => Skill::class,
+            //     'choice_label' => 'name',
             //     'placeholder' => 'Selectionnez une compétence',
             //     'multiple' => true,
             //     'expanded' => true,

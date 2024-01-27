@@ -9,19 +9,23 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Annotation\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\User; // Import the User entity class
-
+use Psr\Log\LoggerInterface;
 
 class CvController extends AbstractController
 {
 
+    
+    
+
 
     /**
-     * @Route("/cv/{firstname}/{lastname}/{age}/{address}", 
+     * @Route("/cv_/{firstname}/{lastname}/{age}/{address}", 
      *  name="app_cv", requirements={"age"="\d+","address"="casa|rabat"}, defaults={"firstname"="Sofrecom", "lastname"="Sofrecom", "age"=0, "address"="casablanca - maroc"})
      */
     public function index(Request $request): Response
     {
 
+        //dd($request);
         // Get the parameter 'param' from the request's attributes
         $firstname = $request->attributes->get('firstname');
         $lastname = $request->attributes->get('lastname');
@@ -43,8 +47,9 @@ class CvController extends AbstractController
             'adress' => $address,
         ]);
     }
+    
     /**
-     * @Route("/cv/show", name="app_cv_show")
+     * @Route("/cv/showUser", name="app_cv_show")
      */
     public function showPortfolio(): Response
     {
@@ -58,6 +63,8 @@ class CvController extends AbstractController
                 "email": "john.doe@example.com",
                 "phone": "123-456-7890",
                 "adress": "123 rue Principale, Montréal, QC, Canada",
+                "picture": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600"
+
         
                 "birthDate": "1990-01-01",
                 "piographie": "You will begin to realise why this exercise is called the Dickens Pattern (with reference to the ghost showing Scrooge some different futures)",
@@ -76,29 +83,28 @@ class CvController extends AbstractController
                 ],
                 "formations": [
                     {
-                    "degree": "Bachelor\'s in Computer Science",
+                    "degree": "Bachelor s in Computer Science",
                     "institution": "University Casablanca",
                     "year": "2014-01-01",
                     "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a elit facilisis, adipiscing leo in, dignissim magna."
                     },
                     {
-                    "degree": "Master\'s in Project Management",
+                    "degree": "Master s in Project Management",
                     "institution": "School Rabat",
                     "year": "2012-01-01",
                     "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a elit facilisis, adipiscing leo in, dignissim magna."
                     },
                     {
-                    "degree": "Master\'s in Project Management",
+                    "degree": "Master s in Project Management",
                     "institution": "School Management ",
                     "year": "2010-01-01",
                     "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a elit facilisis, adipiscing leo in, dignissim magna."
                     }
-                    ],
-                "picture": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    ]
             }';
 
         // Deserialize JSON data into an array
-        $userData = json_decode($userDataJson, true);
+        $userData = json_decode(utf8_encode($userDataJson), true);
 
         dump($userData);
 
@@ -111,18 +117,22 @@ class CvController extends AbstractController
 
 
     /**
-     * @Route("/cv/show/{id}", name="app_cv_show_by_id")
+     * @Route("/cv/show/{id}/details", name="app_cv_show_by_id")
      */
-    public function showUserById($id): Response
+    public function showUserById($id,LoggerInterface $logger): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $user = $entityManager->getRepository(User::class)->find($id);
 
         if (!$user) {
+            $logger->error('User with id '.$id.' was viewed');
+
             throw $this->createNotFoundException('User not found');
+
         }
         
         dump($user);
+        $logger->info('User with id '.$id.' was viewed');
 
         // Rest of the code...
 

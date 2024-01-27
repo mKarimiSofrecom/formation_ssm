@@ -22,16 +22,26 @@
 						<div class="pg-title">My Profile</div>
 					</div>
 					<div class="d-flex-align-center img-profile">
-						<div class="user-img flex-1"><img src="{{ userData.picture  }}"></div>
+					{% if userData.picture is not empty and userData.picture matches '/^(http|https)/'  %}
+                                            {% set pathPicture = userData.picture %}
+                                        {% else %}
+                                            {% set pathPicture = asset('uploads/' ~ userData.picture)  %}
+
+                                        {% endif %}
+						<div class="user-img flex-1"><img src="{{ pathPicture  }}"></div>
 						<div class="user-profile flex-2">
 							<div class="pro-details">
 								<div class="sm-text">HELLO EVERYBODY, I AM</div>
 								<div class="name">{{ userData.fullName }}</div>
 								<div class="role">{{ userData.jop }}</div>
+								<div class="role">Price {{ "14024"|price_dirham }}</div>
+								
 
 							</div>
-							<div class="text">{{ userData.piographie }}</div>
+							<div class="text">{{ userData.piographie|slice(0, 10) ~ '...' }}</div>
+
 							<div class="pr-list">
+
 								<ul>
 									<li>
 										<i class="fa fa-calendar" aria-hidden="true"></i>

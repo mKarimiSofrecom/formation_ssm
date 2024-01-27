@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use JsonSerializable;
+use Monolog\Logger;
 
 /**
  * [UniqueEntity('email')]
@@ -107,6 +108,7 @@ class User implements UserInterface,JsonSerializable
     private $experiences;
 
    
+
 
     public function __construct()
     {
@@ -449,7 +451,7 @@ class User implements UserInterface,JsonSerializable
     {
         return $this->getFullname();
     }
-   
-   
+
+    
    
 }

@@ -148,7 +148,13 @@ class CvFixtures extends Fixture
         $user2 = new User();
         $user2->setFullname('mohamed ali chahboun ');
         $user2->setJop('manager data engineer ');
-        $user2->setPhone('123-456-7890');
+        $user2->setPhone('123-456-7890');$experience7 = new Experience();
+        $experience7->setPosition('python developes');
+        $experience7->setCompany('facebook');
+        $experience7->setPeriod('2018-2022');
+        $experience7->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a elit facilisis, adipiscing leo in, dignissim magna.');
+        $experience7->setUser($user1);
+        $manager->persist($experience7);
         $user2->setAdress('123 rue Principale, Montréal, californie, usa');
         $user2->setBirthday(new \DateTime('1997-01-01'));
         $user2->setPiographie('Lorem ipsum dolor sit amet consectetur adipisicing elit.');

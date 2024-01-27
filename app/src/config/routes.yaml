@@ -14,19 +14,24 @@ test:
 
 #  WEB CALLS
 
-app_cv:
-   path: /cv_sofrecom/{firstname}/{lastname}/{age?0}/{address}
-   controller: App\Controller\Web\CvController::index
-   methods: [GET,POST]
-   defaults:
-      firstname: Sofrecom
-      lastname: Sofrecom
-      age: 0
-      address: casa
-   requirements:
-      age: \d{1,2}
-      address: casa|rabat
-      
+   
+# app_cv:
+#    path: /cv_sofrecom/{firstname}/{lastname}/{age?0}/{address}
+#    controller: App\Controller\Web\CvController::index
+#    methods: [GET,POST]
+#    defaults:
+#       firstname: Sofrecom
+#       lastname: Sofrecom
+#       age: 0
+#       address: casa
+#    requirements:
+#       age: \d{1,2}
+#       address: casa|rabat
+
+# app_cv_test:
+#    path: /cv_sofrecom/{firstname}/{lastname}/{age?0}/{address}
+#    controller: App\Controller\Web\CvController::test
+#    methods: [GET]
 
 
 # route_name_1:
